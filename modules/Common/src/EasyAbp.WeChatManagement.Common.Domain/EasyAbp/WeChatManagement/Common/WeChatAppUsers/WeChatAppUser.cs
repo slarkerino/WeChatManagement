@@ -25,6 +25,12 @@ namespace EasyAbp.WeChatManagement.Common.WeChatAppUsers
         
         public virtual DateTime? SessionKeyChangedTime { get; protected set; }
 
+        [CanBeNull]
+        public virtual string Scope { get; protected set; }
+
+        [CanBeNull]
+        public virtual string AccessToken { get; protected set; }
+
         protected WeChatAppUser()
         {
         }
@@ -62,6 +68,12 @@ namespace EasyAbp.WeChatManagement.Common.WeChatAppUsers
 
             SessionKey = sessionKey;
             SessionKeyChangedTime = clock.Now;
+        }
+
+        public void UpdateAccessToken([CanBeNull] string accessToken, [CanBeNull] string scope)
+        {
+            AccessToken = accessToken;
+            Scope = scope;
         }
     }
 }
